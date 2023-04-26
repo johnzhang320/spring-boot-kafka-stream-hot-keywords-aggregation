@@ -90,7 +90,20 @@ Yes as you think, this code make sense of that we try to find hotest keywords fr
               private String key;
               private Long count;
           }
+ ### Related Constants
+          public interface Constants {
+            public final static String INPUT_TOPIC="input-topic";
+            public final static String  OUTPUT_TOPIC="output-topic";
+            public final static String  OUTPUT_AGGR_TOPIC="output-aggr_topic";
+            public final static String CLIENT_ID_CONFIG= "wordcount-client";
+            public final static String BOOTSTRAP_SERVER="localhost:9092";
+            public final static String CONSUMER_GROUP_ID="my_group";
+            public final static String APPLICATION_CONFIG_ID="kStream_config_test";
+            
+            public final static Integer QUEUE_SIZE=10000;
 
+            public final static Integer MOST_OF_COUNT=1000;
+         }
   ### SharedBlockingQueue class
       BlockingQueue to cache the kstream data, clear it every two minutes after processing data
       HashMap here is make keyword unique and keep maximum count of unique keyword
@@ -155,3 +168,8 @@ Yes as you think, this code make sense of that we try to find hotest keywords fr
                 }
             }
         }
+        
+### Conclusion
+   This project important points are post of ktable and kstream processor, make that hottest keywords are unique during two minute sampling period
+   and next time show, if same words comes in, combine old data in input-topic with new data to show unique keys and their count. All keys are order
+   by count and desc sequence. 
