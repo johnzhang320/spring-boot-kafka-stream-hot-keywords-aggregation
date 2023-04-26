@@ -15,6 +15,4 @@ public interface Constants {
    public final static Integer QUEUE_SIZE=10000;
 
    public final static Integer MOST_OF_COUNT=1000;
-
-
 }
