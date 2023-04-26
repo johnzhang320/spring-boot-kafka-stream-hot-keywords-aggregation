@@ -15,7 +15,21 @@ Yes as you think, this code make sense of that we try to find hotest keywords fr
 <img src="images/key-unique-sorted-by-count-desc-hot-keywords.png" width="40%" height="40%">
 <img src="images/key-unique-sorted-by-count-desc-1000.png" width="40%" height="40%">
 
-
+## Start Zookeeper and Kafka
+       download kafka_2.12-2.1.0.tgz from https://archive.apache.org/dist/kafka/2.1.0/kafka_2.12-2.1.0.tgz
+       tar cvx kafka_2.12-2.1.0.tgz
+       add $KAFKA_HOME point to your kafka installation directory 
+       cd ./spring-boot-kafka-event-driven/kafka_start_stop
+       chmod 755 *
+       zookeeper_start.sh
+       kafka_start.sh
+       jps
+       make sure following two processes running
+       xxxx QuorumPeerMain
+       xxxx Kafka
+       
+### All topics will be automatically created by java code   
+   we can use shell script in directory kafka_start_stop to show topic, producer and consumer status content 
 
 
 ### KStream Processor
@@ -170,6 +184,40 @@ Yes as you think, this code make sense of that we try to find hotest keywords fr
             }
         }
         
+### Thread class
+
+         @AllArgsConstructor
+         public class SortedThread implements Runnable{
+             private SharedBlockingQueue sharedBlockingQueue;
+             @Override
+             public void run() {
+                 while (true) {
+                     sharedBlockingQueue.sortAndRender();
+                 }
+             }
+         }
+### Thread is started by commandLineRunner in Application
+
+
+         @SpringBootApplication
+         @RequiredArgsConstructor
+         public class SpringKafkaStreamStringCodeConfigApplication implements CommandLineRunner {
+            private final  SharedBlockingQueue sharedBlockingQueue;
+            public static void main(String[] args) {
+               SpringApplication.run(SpringKafkaStreamStringCodeConfigApplication.class, args);
+            }
+
+            @Override
+            public void run(String... args) throws Exception {
+               Runnable runnable = new SortedThread(sharedBlockingQueue);
+               Thread thread = new Thread(runnable);
+               thread.run();
+            }
+         }
+### Result Test
+
+   <img src="images/test-result.png" width="70%" height="70%">
+   
 ### Conclusion
    This project important points are post of ktable and kstream processor, make that hottest keywords are unique during two minute sampling period
    and next time show, if same words comes in, combine old data in input-topic with new data to show unique keys and their count. All keys are order
