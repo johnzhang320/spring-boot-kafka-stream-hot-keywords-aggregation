@@ -10,3 +10,11 @@ Using HashMap and sorted ArrayList, we are comparing count of each keyvalue obje
 ArrayList and create desc sorted by count list, such that we created unique and most often used word count list
 
 Yes as you think, this code make sense of that we try to find hotest keywords from routine kstream
+
+### Result:
+<img src="images/key-unique-sorted-by-count-desc-1000.png" width="50%" height="50%">
+<img src="images/key-unique-sorted-by-count-desc-hot-keywords.png" width="50%" height="50%">
+
+
+
+
