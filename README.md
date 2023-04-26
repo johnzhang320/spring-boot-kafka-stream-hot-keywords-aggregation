@@ -216,7 +216,7 @@ Yes as you think, this code make sense of that we try to find hotest keywords fr
          }
 ### Result Test
 
-   <img src="images/test-result.png" width="70%" height="70%">
+   <img src="images/test-result.png" width="100%" height="100%">
    
 ### Conclusion
    This project important points are post of ktable and kstream processor, make that hottest keywords are unique during two minute sampling period
