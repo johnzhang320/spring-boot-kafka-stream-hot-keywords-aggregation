@@ -31,44 +31,48 @@ public class SharedBlockingQueue {
     private Map<String, Long> countMap = new HashMap<>();
 
     public void sortAndRender() {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            synchronized (sortedList) {
-                countMap.clear();
-                /**
-                 *  Unique for current kvCounts by CountMap and only max count of KVCount into CountMap
-                 */
-                while (!sharedBlockingQueue.isEmpty()) {
-                    KVCount kvCount = sharedBlockingQueue.poll();
-                    String key = kvCount.getKey();
-                    if (key.isEmpty() || key==null || key=="") continue;
-                    Long value = kvCount.getCount();
-                    if (countMap.containsKey(key)) {
-                        Long count = countMap.get(key);
-                        if (count<value) {
-                            countMap.put(key,value);
-                        }
-                    } else {
+        /**
+         *   2 seconds of duration for thread really process
+         *   sleep means the thread yield CPU time to others
+         */
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        synchronized (sortedList) {
+            countMap.clear();
+            /**
+             *  Unique for current kvCounts by CountMap and only max count of KVCount be saved into CountMap
+             */
+            while (!sharedBlockingQueue.isEmpty()) {
+                KVCount kvCount = sharedBlockingQueue.poll();
+                String key = kvCount.getKey();
+                if (key.isEmpty() || key==null || key=="") continue;
+                Long value = kvCount.getCount();
+                if (countMap.containsKey(key)) {
+                    Long count = countMap.get(key);
+                    if (count<value) {
                         countMap.put(key,value);
                     }
-                    if (countMap.size()>Constants.MOST_OF_COUNT) break;
-                 }
+                } else {
+                    countMap.put(key,value);
+                }
+                if (countMap.size()>Constants.MOST_OF_COUNT) break;
+             }
 
-                countMap.forEach((k,v)->sortedList.add(new KVCount(k,v)));
+            countMap.forEach((k,v)->sortedList.add(new KVCount(k,v)));
 
-                if (!sortedList.isEmpty()) {
-                    System.out.println("\n------------------Most Often Used Words-------------------");
-                    /**
-                     *  Sorting by Desc
-                     */
-                    sortedList.sort((o1,o2)->o2.getCount().compareTo(o1.getCount()));
-                    AtomicInteger sequence_of_unique_words= new AtomicInteger(1);
-                    sortedList.forEach(kvCount-> System.out.println(sequence_of_unique_words.getAndIncrement()+" "+kvCount.getKey()+" ==> "+kvCount.getCount()));
-                 }
-                sortedList.clear();
+            if (!sortedList.isEmpty()) {
+                System.out.println("\n------------------Most Often Used Words-------------------");
+                /**
+                 *  Sorting by Desc
+                 */
+                sortedList.sort((o1,o2)->o2.getCount().compareTo(o1.getCount()));
+                AtomicInteger sequence_of_unique_words= new AtomicInteger(1);
+                sortedList.forEach(kvCount-> System.out.println(sequence_of_unique_words.getAndIncrement()+" "+kvCount.getKey()+" ==> "+kvCount.getCount()));
+             }
+            sortedList.clear();
         }
     }
 }
