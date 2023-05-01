@@ -1,4 +1,4 @@
-# spring-boot-kafka-stream-most-often-used-unique-word-count
+# spring-boot-kafka-stream-sorted-unique-word-count
 
 ### Overview
 Using kafka stream toplogic transform, we usually get word-count but using KGroupedStream via SelectKey and GroupByKey then count(), we can not
