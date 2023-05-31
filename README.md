@@ -1,4 +1,4 @@
-# spring-boot-kafka-stream-sorted-unique-word-count
+# spring-boot-kafka-stream-hot-keywords-aggregation
 
 ### Overview
 kafka stream word count toplogic usually has following steps:
