@@ -1,6 +1,8 @@
 # spring-boot-kafka-stream-hot-keywords-aggregation
 
-### Overview
+### Key Points
+1. Create Kafka reduce aggreg
+
 kafka stream word count toplogic usually has following steps:
 (1) streamBuilder consume some topic to create kstream, (2) mapValue this kstream to lowercase,(3) flatMap to delimit each word in stream (4) selectKey determine value as key, (5)groupByKey and count to get word count KTable
 Issues one - repeated words occurs because stream continues
