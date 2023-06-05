@@ -1,35 +1,59 @@
-# spring-boot-kafka-stream-hot-keywords-aggregation
+# Spring-boot Kafka Stream Hot Keywords Aggregation
 
-### Key Points
-1. Create Kafka reduce aggreg
+## Key Points
+  1. In order to eliminate word repeated occurred along with count increase, comparing multiple DSL solutions such as groupByKey +   count(), groupByKey + reduce etc, all of them can not remove intermediate key occurance. 
+  3. Finally figure out groupbykey + hopping window + suppress + correctly set window size and advance window size and grace size, we can sucessfully remove intermediate occurrance, DSL output unique key value pair
+  4. Then we sink to ouput topic and consume this topic, put the unique key value pairs to blockedqueue
+  5. We use a thread to poll blocked queue to map to remove repeated key pairs which are created by kstream.to producer 
+  6. Finally put map to list and descend sort list become hot keyword then return to Rest API
+   
+## Hot Key Work Flow Chart
+   <img src="images/hot-keyword-work-flow.png" width="100%" height="100%">
+    
+## Topology DSL 
+  <img src="images/Toplogic-flow-chart.png" width="100%" height="100%">
+  
+## Start Zookeeper and Kafka using Confluent Kafka 6.0
+### docker-compose.yml   
+    
+      version: '3'
+      services:
+        zookeeper:
+          image: confluentinc/cp-zookeeper:6.0.0
+          hostname: zookeeper
+          container_name: zookeeper
+          ports:
+            - "32181:32181"
+          environment:
+            ZOOKEEPER_CLIENT_PORT: 32181
+            ZOOKEEPER_TICK_TIME: 2000
+          networks:
+            - kafka_network
+        kafka:
+          image: confluentinc/cp-enterprise-kafka:6.0.0
+          hostname: kafka
+          container_name: kafka
+          depends_on:
+            - zookeeper
+          ports:
+            - "29092:29092"
+            - "9092:9092"
+          environment:
+            KAFKA_BROKER_ID: 1
+            KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:32181'
+            KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_HOST://localhost:29092
+            KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+            KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+            KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+            KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+          networks:
+            - kafka_network
 
-kafka stream word count toplogic usually has following steps:
-(1) streamBuilder consume some topic to create kstream, (2) mapValue this kstream to lowercase,(3) flatMap to delimit each word in stream (4) selectKey determine value as key, (5)groupByKey and count to get word count KTable
-Issues one - repeated words occurs because stream continues
-For example "Hello World Hello John, Hello Eric" those word coun produced "Hello 1, world 1, Hello 2, and Eric 1 Hello 3", they can not give me "Hello 3" uniquely 
-Isuues two --real time stream transform toplogic can not give sorted word by count, especaily descend sort by count.
-
-This project used regular ktable WordCount result first, then save ktable to a topic as producer, when the consumer listen ConsumerRecord<String, Long> record, in consumer side we borrow java strong capbility on queue, mapping, sorting and thread, never bother producer real time processing, we create 
-list of unique word per count within specific duration, sort list of words by descend count order -- wed created a special consumer
- 
-Yes as you think, we try to find hot keywords list from continuous kstream
-
-### Result:
-<img src="images/key-unique-sorted-by-count-desc-hot-keywords.png" width="40%" height="40%">
-<img src="images/key-unique-sorted-by-count-desc-1000.png" width="40%" height="40%">
-
-## Start Zookeeper and Kafka
-       download kafka_2.12-2.1.0.tgz from https://archive.apache.org/dist/kafka/2.1.0/kafka_2.12-2.1.0.tgz
-       tar cvx kafka_2.12-2.1.0.tgz
-       add $KAFKA_HOME point to your kafka installation directory 
-       cd ./spring-boot-kafka-event-driven/kafka_start_stop
-       chmod 755 *
-       zookeeper_start.sh
-       kafka_start.sh
-       jps
-       make sure following two processes running
-       xxxx QuorumPeerMain
-       xxxx Kafka
+      networks:
+        kafka_network:
+          name: kafka_same_host_net
+    
        
 ### All topics will be automatically created by java code   
    we can use shell script in directory kafka_start_stop to show topic, producer and consumer status content 
