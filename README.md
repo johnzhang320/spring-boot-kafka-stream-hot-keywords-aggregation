@@ -54,10 +54,135 @@
         kafka_network:
           name: kafka_same_host_net
     
-       
-### All topics will be automatically created by java code   
-   we can use shell script in directory kafka_start_stop to show topic, producer and consumer status content 
+## Rest API, Service and MessageAgent
+  
+        @RestController
+        @RequiredArgsConstructor
+        @RequestMapping("/hotkeywords")
+        public class LoadFileStartController {
+            private final WordsProducer wordsProducer;
+            /*
+               GET
+               http://localhost:8091/hotkeywords/search
+             */
+            @GetMapping("/search")
+            public String getHotKeywords() {
+                 MessagingAgent.getMessagingAgent().setStart();
+                 String result="";
+                 wordsProducer.uploadTestFileSend();
+                 while(true) {
+                     try {
+                         Thread.sleep(1000);
+                     } catch (InterruptedException e) {}
+                     if (MessagingAgent.getStartStopFlag().equalsIgnoreCase("stop")) {
+                         result = MessagingAgent.getResult();
+                         break;
+                     }
+                 }
+                 return result;
+            }
+            /*
+                  GET
+                  http://localhost:8091/hotkeywords/searchbyfile/mediation.txt
+                  http://localhost:8091/hotkeywords/searchbyfile/resume.txt
+                  http://localhost:8091/hotkeywords/searchbyfile/politics.txt
+                  http://localhost:8091/hotkeywords/searchbyfile/description.txt
+                */
+            @GetMapping("/searchbyfile/{testFile}")
+            public String getHotKeywordsByTestFile(@PathVariable("testFile") String fileName) {
+                MessagingAgent.getMessagingAgent().setStart();
+                String result="";
+                wordsProducer.uploadTestFileSend(fileName);
+                while(true) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {}
+                    if (MessagingAgent.getStartStopFlag().equalsIgnoreCase("stop")) {
+                        result = MessagingAgent.getResult();
+                        break;
+                    }
+                }
+                return result;
+            }
+        }
+        
+## Configuration
+ 
+      @EnableKafkaStreams
+      @Configuration
+      @EnableKafka
+      public class KafkaDefaultBeanConfigure {
+          @Bean(name="boostrapServerAdmin")
+          public KafkaAdmin admin() {
+              Map<String, Object> configs = new HashMap<>();
+              configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, Constants.BOOTSTRAP_SERVER);
+              return new KafkaAdmin(configs);
+          }
+          @Bean
+          @DependsOn("boostrapServerAdmin")
+          NewTopic inputTopic() {
+              return TopicBuilder.name(Constants.INPUT_TOPIC).build();
+          }
+          @Bean
+          @DependsOn("boostrapServerAdmin")
+          NewTopic outputTopic() {
+              return TopicBuilder.name(Constants.OUTPUT_TOPIC).build();
+          }
+          @Bean(name = KafkaStreamsDefaultConfiguration.DEFAULT_STREAMS_CONFIG_BEAN_NAME)
+          public KafkaStreamsConfiguration kafkaStreamsConfig() {
+              Map<String, Object> props = new HashMap<>();
+              props.put(StreamsConfig.APPLICATION_ID_CONFIG, Constants.APPLICATION_CONFIG_ID);
+              props.put(StreamsConfig.CLIENT_ID_CONFIG, Constants.CLIENT_ID_CONFIG);  // I added
+              props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, Constants.BOOTSTRAP_SERVER);
+              props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
+              props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
+              props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG,"latest");
+              props.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, 10 * 1000);
+              // For illustrative purposes we disable record caches.
+              props.put(StreamsConfig.CACHE_MAX_BYTES_BUFFERING_CONFIG, 0);
 
+              props.put(StreamsConfig.DEFAULT_TIMESTAMP_EXTRACTOR_CLASS_CONFIG, WallclockTimestampExtractor.class.getName());
+
+              return new KafkaStreamsConfiguration(props);
+          }
+          /**
+           *  Configure Consumer
+           * @return
+           */
+          @Bean
+          public ConcurrentKafkaListenerContainerFactory<String, Long > kafkaListenerContainerFactory (final 
+          ConsumerFactory<String,Long> consumerFactory) {
+              final ConcurrentKafkaListenerContainerFactory<String,Long> factory = new ConcurrentKafkaListenerContainerFactory();
+              factory.setConsumerFactory(consumerFactory());
+              return factory;
+          }
+
+          @Bean
+          public ConsumerFactory<String, Long> consumerFactory() {
+              final Map<String ,Object> config = new HashMap<>();
+              config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, Constants.BOOTSTRAP_SERVER);
+              config.put(ConsumerConfig.GROUP_ID_CONFIG, Constants.CONSUMER_GROUP_ID);
+              config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+              config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, LongDeserializer.class);
+              return new DefaultKafkaConsumerFactory<>(config);
+          }
+
+          /**
+           *  Configure Producer
+           */
+          @Bean
+          public KafkaTemplate<String,String> kafkaTemplate(final ProducerFactory producerFactory) {
+              return new KafkaTemplate<>(producerFactory());
+          }
+          @Bean
+          public ProducerFactory<String,String> producerFactory() {
+              final Map<String ,Object> config = new HashMap<>();
+              config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, Constants.BOOTSTRAP_SERVER);
+              config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+              config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+              return new DefaultKafkaProducerFactory<>(config);
+          }
+      }
 
 ### KStream Processor
    package kafka.stream.hot.keywords.aggregation.processor;
@@ -291,6 +416,7 @@
                thread.run();
             }
          }
+     
 ### Result Test
 
    <img src="images/test-result.png" width="100%" height="100%">
