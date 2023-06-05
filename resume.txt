@@ -1,0 +1,138 @@
+Key Qualification
+•	Computer Science of Master Degree and 15+ years of  Software Development Experience , 
+•	Design, Implement, coding and testing using Java and recently working experience in Intel, Apple and Dell
+•	My most current experience: Java, Spring boot on Microservice/Rest API/MVC/Batch/Security/ Oauth2 /Kafka//MongoDb/Cassandra/MySQL/Oracle/SQL Server.  Worked on git/github/Jenkins/Kubernetes/ DockerFile/Docker Compose/Google Jib/Docker Hub/ AWS EC2/ECS/RDS, Learnt the EKS , Lambda as well. Stored Procedures, git and github and Jira. Angular 12,  AngularJS,  JQuery, JSP and Javascript.  Scala / Python on Data Science/Spark/Kafka, knowledge about data science in scala code
+•	Strong knowledge on Data Structure and Algorithm and Design Pattern on multiple working systems
+•	Design/coding/code review/unit/integrated testing/trouble shorting on Intel ICMS Forecast Service API, WebUI and Stored Procedure/Trigger, Apply Pay Certificate Engine, Apple iAd and Automation Engine, Dell Email Security Operation WebUI etc
+•	Worked on Java 1.6/1.7/1.8/17 and platform and tools such as IntelliJ, Eclipse, gradle, maven and github  
+•	Extension API experience using Spring and SpringBoot including Spring Microservice, Spring JPA, Spring Mongodb, Spring Cassandra, Spring Restful, Spring MVC, Hands on Spring Microservice, Spring Security, Spring Oauth2. Applied Java, Spring and Database to API development
+•	Oracle Certificated DBA and 6 years DBA experience on Oracle and MS SQL Server, Mongodb and mysql expertise on Hibernate(Java and Spring), Spring JPA, Recent QueryDSL in Intel and Strong JDBC for many years, SQL and Java database performance tuning, PL/SQL and T-SQL Stored Procedure Coding/Testing, Database Trigger Coding/Testing and working experience on MS SQL Server and MySQL. Coding on Spring Integrating with Cassandra and MongoDb, good knowledge about No-SQL.
+•	Hands on and Coding Experience on Spark and Scala see below github including scala data science algorithms, transforms and rdd, dataframe, SparkSQL, Spark Join, Spark Stream, Mlib, Make Scala, Spark maven project running in Intellij 2023 CE, working on Kafka in Apple and MQ-Active in Intel
+•	Working experience on Javascript, JQuery, AngularJS, Sencha, JSP with Spring MVC and Struts. Completed many applications in frontend projects.
+•	Especially created JSON-String-Library, Huge XML chuck import and tuning, TestNG  automation, X509 Certificate Engine, Password Frontend Encryption before submit, SSL Connection Package and Spring Boot Security, Log4j2 cluster setting etc.
+•	Mortgage Domain project:
+https://github.com/johnzhang320/DevGeekSkills/tree/master/df-mortgage-loan-agency-springmvc-jquery-hibernate/LoanAgency   
+        Included Amortization Calculation Jasper Report PDF, Loan Comparing, Loan Quota, Niche Loan, Auto Email Marketing 
+
+
+•	Computer Science Master Degree, USA Citizen 
+_________________________________________________________________________________
+
+WORKING EXPERIENCE
+Dec, 2022 – present 
+Self - Employee 
+Worked as code contributor to github repository, involve Spring boot 2.7.8, Spring boot Microservice and docker container for microservices, Spring Kafka Scenarios, Spring Security, Front end encryption, scala, datascience , spark code,  AWS ECS/RDS for Spring boot, Mongodb , Mysql and  EC2 tomcat, docker container , EC2 kafka deployment, Jenkins and Kubernetes, especially I worked on Angular 8/12 using Reactive Form, Ng-form. AG-Grid, Angular Material elements, Tab menu, raised button, Boostrap.css, Angular Dialog with AG-Grid and with Reactive Form
+, 
+
+Intel, inc June 2022 – Dec 16,2022 Remote
+Team: ICMS-Forecast Team
+Worked as Senior Software Engineer
+Environment and Tools:  API with Java 1.8,  Spring boot, Spring JPA, QueryDSL, Swagger for API testing, MQ-Active; MS SQL Server,with Stored Procedures, Views and Database Triggers; WebUI/Javascript/HTML with AngularJS, ng-Grid, md materials, AngularJS Charts; IntelliJ for APIs and WebUI, GitHub and Gradle
+(1)	Worked on Couple of Microservices Systems such as  ICMSForecastService(API), ICMSManagementService(API), ICMSSupplyDemandServeice(API) ICMSMessagingService(API) , Created JPA Domain Objects, DTO Objects, Mappers,  Generated QueryDSL Q-Class Object to create Micro Service Architect
+(2)	Made a lot of T-SQL Stored Procedures, Views and Database Triggers, handling complex database requirements
+(3)	Add components to WebUI projects with Angular JS , Grid, MD-Material based HTML and JS. Applied MD-Material and AngularJS to create exquisite and universal Grid and Charts.
+(4)	Created Emulation Forecast Tab Projects and Handled many trouble shorting in UI and fixed a lot bugs.
+
+
+
+Apple, Inc, San Jose,Cupertino (Aug  2019 – Jan. 2021)
+Senior Java Developer 
+Team:  Apply iAd Platform Core Service(CS) Development Team and CS QA Team
+Environment and Tools: Java, Spring, iAd Microservices, Oracle, Certificate Applied, TestNG, Eclipse, Gradle, github, Rest API, JSON, Avro, Scala, Kafka, Json String Library Development,  Mongodb, gradle, github, Mongodb, AWS ECS RBS, and EC2
+
+Completed main projects and jobs: 
+(1)	Worked on iAd Platform CS Backend APIs maintenance and code bug ticket handling
+(2)	Microservice integrated iAd platform with Scala Kafka Stream Service
+(3)	Using Scala created Avro Object Generic Converter between POJO and Avro Object for Kafka Streaming.
+(4)	Spring boot with mongodb and Oracle Database and deployed to AWS ECS,RBS,EC2
+(5)	Completed QA team Unit Test Platform for iAd Platform APIs test via TestNG, Java, JSON result parser
+(6)	Created JSON String library to parse the output of iAd Platform APIs, using this library to be able to read, write, compare, merge and check JSON Strings easily
+
+
+
+
+Walmart Lab Sunnyvale, CA (Oct 22, 2018 –Mar 2019)
+Senior Backend Java Developer 
+Team:  Walmart Online Shopping System Checkout and Cart Service Team
+Environment and Tools: Java, Eclipse, Gradle, github, Jendins, Spring, Microservice, Rest API, JSON, Avro, Kafka, gradle, AWS EC2 ,RDS
+Completed main projects and jobs: 
+(1)	Worked on Checkout Automation Text Platform involve technologies of Groovy/Gradle/Testing/JSON/DSL
+(2)	Maintain Add Cart and Checkout Microservices communications each other
+(3)	Trace Cart-Service code by STS debug mode and UMLet tool and got familiar to the Rest API, Design Patterns, Service Layers, Cache, Spring /Camel /Json DTO retrieve, and mapper to Hibernate DO. 
+(4)	Completed an assignment to add Group Component Attributes to Wireless Cart Service project. Trace Checkout Service flow and code in STS
+(5)	Test environment on AWS EC2 for new API with Tomcat and RDS mysql and Using Jenkins to deploy
+
+Apple, Inc, Sunnyvale, Cupertino CA (Oct 30,2017 – Oct 19,2018)
+Senior Software Engineer (Java with Security)
+Team:  Apply Pay SRE Team
+Environment and Tools: Core Java, Java keystore, Eclipse, Certificate X509, Splunk API, maven, github, Javascript, CSS, JSP, Apple Git Repository, Radar, Splunk, Docker Container Created
+Completed main projects and jobs: 
+(1)	Designed and implemented Apple Pay Certificates Maintenance Engines. This is special Tool for Certificate Renew, Create, Distribute, Notification and Check in. Create Spring and Javacript based UI interface
+(2)	The Certificate Engine was converted to Docker Image and Push to Docker Hub.
+(3)	Using AES algorithm to encrypt user credential. The tool retrieves expiring certificates alert by run Splunk API and CA Manager to retrieve, decrypt and parse Keystores Data from Git Repository, renew keystore by creating CSR to Apple CA Manager and import signed certificate chain from CA Manager, distribute keystore to multiple folders and check into Git Repository, send Radar notice to related parties. Now this automatic tool was deployed to SRE QA Server. 
+Bay Cal Financial mortgage loan Agency System (Dec 2015 -Sept 2018) 
+Environment and Tools: Core Java,  Spring MVC, JSP, AWS EC2 with Tomcat & MySQL5.7/Mariadb/Mongodb  JQuery, Javascript, CSS, HTML, JasperReport. 
+Self-employee and part time subcontract to develop Mortgage Loan Agent System which can let customer loan quota , loans comparison calculation, Amortization Calculation PDF Reporting, Customers Email Notice, Loan Policy and Agents Account manager, SSL Channel etc.  
+
+Dell R& D Center, Email Security Group of Dell SonicWall, Santa Clara, CA (Nov 2012 – Nov 2016)
+Senior Software Engineer (Fulltime)
+Team:  Email Security WebUI Team
+Environment and Tools: 
+Worked on as fulltime Senior Software Engineer for Java part of Email Security Products Team.
+Environment and Tools: Core Java, Microservice, Thread, JDBC, Restful API, Struts, JQuery, JSP, Javascript, Sencha, CSS, HTML, Java Security, MySQL, XML, Email Security, DMARC Reporting, Log 4j2 framework
+Completed main projects and jobs: 
+(1)	Email Security WebUI system enhancement using Java, Struts, JSP, CSS, HTML, Javascript, JQuery, Restful, Java Security, MySQL, XML , organized in Microservices. 
+(2)	Email Security DMARC huge RUA XML parse/chunk import to MySql database using Java, SAX parser, JDBC and timer scheduler
+(3)	Email Security DMARC report rich UI and data gathering using Java, Struts, JSP, JQuery, Javascript, CSS
+(4)	DMARC Report complicated alignment text concluding using Java and Database
+(5)	Email Security WebUI XML Data Driving JQuery based widget with XML left side and Database right side
+(6)	Implemented Log4j2 Logger Framework for Email Security WebUI System using RESTful Client/Server Symmetric Key Authenticate and UI change log level for all server within server clusters, fixed the bugs for Log4j2 library for file appending etc
+(7)	Auto Perl Script tool to migrate thousands Struts JSP headers and Java code automatically 
+(8)	Large MySql database performance tuning
+(9)	Cluster Analysis Server Remote Data Collector UI interface using core Java, Java multithreading and Javascript Sencha for rich UI and XML gathering.
+
+
+Apprion, INC, Mountain View CA  (03/2011 - 02/2012)
+Senior Software Engineer(Fulltime)
+Team:  Wireless Monitor System Software Team
+Environment and Tools: Core Java, Struts/Spring MVC, JSP, CSS, HTML, Javascript, JQuery, Restful, JBOSS
+Java Quartz, Dojo, Scheduler, JasperReport, MySQL/Mongodb , JFreeChart. Deployed System to AWS EC2
+Completed main projects and jobs: 
+(1)	developed Web Applications as products to manage robust wireless devices and networking services to coarse workshops like paper mill, oil plant and modern buildings security etc. 
+(2)	worked with Agile Development team with Rally online, extensively use Java (JDK 1.5) , Eclipse 7.0 IDE, JBoss 4.03, MySQL, Struts, JSP, Spring MVC, Java Quartz  Scheduler, JasperReport, MySQL/Mongodb , JFreeChart, XML, XSD, Java DOM, JavaScript, Dojo, DWR etc.
+(3)	Deployed Spring and JasperReport Server to AWS EC2
+
+US Postal Service IT Center, San Mateo, CA (07/2008 - 01/2011)       
+Senior Java Developer (Fulltime)/Oracle Performance Tuner 
+Team:  USPS IT Center Postal One Team
+Environment and Tools: Java, JDBC, Oracle 10g, Struts, JSP, Standard/Struts Tags, Log4j, XML, Spring MVC, Ibstis, Ajax, JavaScript, CSS, Perl,  Coldfusion, J2EE, Session Bean and EJB, PERL, Subversion, CVS, IBM WSAD5.12 IDE, RAD7.5 IDE
+Completed main projects and jobs: 
+(1)	Worked on Placard Project as sub project of US Postal Postal One Project, Completed requirement collection, document, figured out 50 interfaces with Postal One Projects from existing code, coding the JSP, coldfusion, Java, JDBC, UI interface and placard report print report
+(2)	Worked on MLOCR Projects and completed the UI interface, Java code with Postal One Project
+(3)	Postal One main report database and code performance tuning, turning Oracle SQL statement on JDBC and JDBC fetching buffer, reduce the report running time from 96 seconds to 6 seconds
+(4)	Combined Java, Struts Taglib, JSP and applied some algorithms to create new pagination code which can contains changeable page lines size
+(5)	Provided PL/SQL code and JDBC turning
+						 
+TrueTelTechnology,Inc.  Santa Clara, CA (06/2006 to 05/2007)   
+Senior Software Engineer(Fulltime)
+Team:  TrueTel Software Team
+Environment and Tools: Linux, C++ ,CVS ,Java, extending computer science and linux knowleges
+Completed main projects and jobs: 
+(1)	worked in well funding start up company and very specialsubcontract of Boeing, this company was developing a special platform which is above Linux and running special apps.  
+(2)	I worked Linux signal based User Session Manager using solid computer science foundations: C/C++, IBM Rational Rose Design Tool, Linux System Programming, Signal Process, Multi-Processes, Multi-Thread, Pthread, Java, JNI, C++ STL, CVS, C++ Object Oriented Design and Coding
+(3)	I solved asynch-safe issue using existing smart reference, thread pool manager, Linux signal handling integrated with multi-processes
+
+Integrated Silicon Solution, Inc (ISSI) . Santa Clara, CA (07/2001 to 06/2004)   
+Senior Database DBA/Developer  (Fulltime)
+Team: IT Department Database Team
+Environment and Tools: SQL Server 2000, Oracle 8i, Baan ERP, PL/SQL, Baan SQL Script ,VBScript, Perl Script
+Completed main projects and jobs: 
+(1)	Worked as SQL_Server DBA/Developer, BaanERP Administrator, Oracle DBA/Developer, Java Developer, Baan Script and VBScript Developer. Worked cross teams, 24x7 on call service over USA
+(2)	Transferred ODBC data transfer from SQL-Server to Oracle
+(3)	Coded on Oracle PL/SQL, SQL_Server T_SQL procedures, RMAN Scripting, Perl Scripting, VBScript
+(4)	Baan SQL Script programming for Baan ERP System, Completed OET and Product Order Update  programming
+(5)	Created the schedule for the backup job scripts for Sql_Server Databases and did a lot of Performance Tuning
+(6)	Baan ERP System Data Migration and System Updated, Service Pack Installation
+(7)	Recovered Oracle and SQL_Server database from couple of disaster failures
+(8)	Database application and system performance tuning and did replication of SQL Server
+
