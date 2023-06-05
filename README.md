@@ -8,10 +8,10 @@
   6. Finally put map to list and descend sort list become hot keyword then return to Rest API
    
 ## Hot Key Work Flow Chart
-   <img src="images/hot-keyword-work-flow.png" width="100%" height="100%">
+   <img src="images/hot-keyword-work-flow.png" width="70%" height="70%">
     
 ## Topology DSL 
-  <img src="images/Toplogic-flow-chart.png" width="100%" height="100%">
+  <img src="images/Toplogic-flow-chart.png" width="70%" height="70%">
   
 ## Start Zookeeper and Kafka using Confluent Kafka 6.0
 ### docker-compose.yml   
