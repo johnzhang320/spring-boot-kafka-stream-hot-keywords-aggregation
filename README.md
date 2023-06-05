@@ -109,8 +109,90 @@
             }
         }
 ## Service 
-   
+ 
+ 
+          @Service
+          @Slf4j
+          public class LoadFileToSend {
+              //read the “fileTest.txt” available under src/main/resources
+
+              public String readFileFromResource(String testFile) {
+                  String retVal="nothing";
+                  try {
+                     // Create a file object
+                      File f = new File(testFile);
+                      // Get the absolute path of file f
+                      String absolute = f.getAbsolutePath();
+                      // Display the file path of the file object
+                      // and also the file path of absolute file
+                      System.out.println("Original path: "
+                              + f.getPath());
+                      System.out.println("Absolute path: "
+                              + absolute);
+                   InputStream inputStream = new FileInputStream(f);
+                   retVal = readFromInputStream(inputStream);
+                  } catch (IOException e) {
+                      log.info("Failed to read file "+testFile);
+                      throw new RuntimeException("Failed read file:"+testFile);
+                  }
+                  return retVal;
+              }
+              private String readFromInputStream(InputStream inputStream)
+                      throws IOException {
+                  StringBuilder resultStringBuilder = new StringBuilder();
+                  BufferedReader br = null;
+                  try  {
+                       br = new BufferedReader(new InputStreamReader(inputStream));
+                      String line;
+                      while ((line = br.readLine()) != null) {
+                          resultStringBuilder.append(line).append("\n");
+                      }
+                  } catch (IOException e) {
+                      log.info("Failed to read file ");
+                  } finally {
+                      if (br!=null) {
+                          br.close();
+                      }
+                      inputStream.close();
+                  }
+                  return resultStringBuilder.toString();
+              }
+          }
+  
 ## MessageAgent
+
+      public class MessagingAgent {
+          private static MessagingAgent messagingAgent=null;
+          private static String startStopFlag="stop";
+          private static String buffer="";
+
+          public static MessagingAgent getMessagingAgent() {
+              if (messagingAgent==null) {
+                  messagingAgent = new MessagingAgent();
+              }
+              return messagingAgent;
+          }
+          public static void setStart() {
+              startStopFlag = "start";
+              buffer="";
+          }
+
+          public static void setStop() {
+              startStopFlag = "stop";
+          }
+
+          public static String getStartStopFlag() {
+              return startStopFlag;
+          }
+
+          public static String getResult() {
+              return buffer;
+          }
+          public static void setResult(String result) {
+              buffer=result;
+          }
+      }
+
 ## Configuration
  
       @EnableKafkaStreams
