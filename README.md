@@ -420,6 +420,7 @@
 ### Result Test
 
    <img src="images/suppressed_keyword_unique_in_hopping_window_example_one.png" width="100%" height="100%">
+   <img src="images/politican-jemi-carter-presentation.png" width="100%" height="100%">
    
 ### Conclusion
    This project important points are post of ktable and kstream processor, make that hottest keywords are unique during two minute sampling period
