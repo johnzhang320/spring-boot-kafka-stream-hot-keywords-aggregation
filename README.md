@@ -14,7 +14,7 @@
   <img src="images/Toplogic-flow-chart.png" width="70%" height="70%">
   
 ## Project Structure
-   <img src="images/project-structure.png" width="70%" height="70%">
+   <img src="images/project-structure.png" width="50%" height="70%">
    
 ## Start Zookeeper and Kafka using Confluent Kafka 6.0
 ### docker-compose.yml   
