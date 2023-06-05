@@ -13,6 +13,9 @@
 ## Topology DSL 
   <img src="images/Toplogic-flow-chart.png" width="70%" height="70%">
   
+## Project Structure
+   <img src="images/project-structure" width="70%" height="70%">
+   
 ## Start Zookeeper and Kafka using Confluent Kafka 6.0
 ### docker-compose.yml   
     
@@ -54,7 +57,7 @@
         kafka_network:
           name: kafka_same_host_net
     
-## Rest API, Service and MessageAgent
+## Rest API 
   
         @RestController
         @RequiredArgsConstructor
@@ -105,7 +108,9 @@
                 return result;
             }
         }
-        
+## Service 
+   
+## MessageAgent
 ## Configuration
  
       @EnableKafkaStreams
@@ -415,8 +420,7 @@
                Thread thread = new Thread(runnable);
                thread.run();
             }
-         }
-     
+         }     
 ### Result Test
 
    <img src="images/suppressed_keyword_unique_in_hopping_window_example_one.png" width="100%" height="100%">
